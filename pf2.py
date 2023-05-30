@@ -22,7 +22,6 @@ def validar_entero(mensaje):
             return valor
         except ValueError:
             print('Error: Debes ingresar un valor entero.')
-
 def validar_numero(mensaje):
     while True:
         try:

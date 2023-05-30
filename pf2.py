@@ -1,6 +1,7 @@
 import mysql.connector
 import csv
 
+
 # Configuración de la base de datos
 db_config = {
     'host': 'localhost',

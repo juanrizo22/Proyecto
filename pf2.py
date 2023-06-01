@@ -16,6 +16,16 @@ cursor = db.cursor()
 
 # Funciones de validación
 def validar_entero(mensaje):
+    """
+    Solicita al usuario ingresar un valor entero a través de la consola.
+
+    Parámetros:
+    - mensaje: str. El mensaje que se muestra al usuario para solicitar el valor.
+
+    Retorna:
+    - int. El valor entero ingresado por el usuario.
+
+    """
     while True:
         try:
             valor = int(input(mensaje))
@@ -24,6 +34,16 @@ def validar_entero(mensaje):
             print('Error: Debes ingresar un valor entero.')
 
 def validar_numero(mensaje):
+    """
+    Solicita al usuario ingresar un valor numérico (número decimal) a través de la consola.
+
+    Parámetros:
+    - mensaje: str. El mensaje que se muestra al usuario para solicitar el valor.
+
+    Retorna:
+    - float. El valor numérico ingresado por el usuario.
+
+    """
     while True:
         try:
             valor = float(input(mensaje))
@@ -33,6 +53,14 @@ def validar_numero(mensaje):
 
 # Funciones CRUD para equipos
 def ingresar_equipo():
+    """
+    Permite al usuario ingresar los datos de un equipo y los inserta en una base de datos.
+
+    Esta función solicita al usuario que ingrese el serial, número de activo, nombre, marca,
+    código de ubicación y código de responsable del equipo. Los datos ingresados se validan
+    según los tipos esperados y se insertan en una tabla de la base de datos.
+
+    """
     print('== Ingresar Equipo ==')
     serial = input('Serial: ')
     numero_activo = validar_entero('Número de activo: ')
@@ -49,6 +77,15 @@ def ingresar_equipo():
     print('Equipo ingresado exitosamente.')
 
 def ingresar_equipo_automatico():
+    """
+    Permite ingresar automáticamente los datos de equipos desde un archivo CSV a una base de datos.
+
+    Esta función solicita al usuario la ruta del archivo CSV que contiene los datos de los equipos.
+    Luego, lee el archivo CSV y obtiene los datos de los equipos. Cada fila del archivo se interpreta
+    como un equipo con los siguientes campos: serial, número de activo, nombre, marca, código de ubicación
+    y código de responsable. Los datos se validan y se insertan en la base de datos.
+
+    """
     print('== Ingresar Equipo Automático ==')
     archivo = input('Ruta del archivo CSV: ')
 
@@ -80,6 +117,15 @@ def ingresar_equipo_automatico():
     print('Equipos ingresados exitosamente.')
 
 def actualizar_equipo():
+    """
+    Permite actualizar la información de un equipo existente en la base de datos.
+
+    Esta función solicita al usuario el número de activo del equipo que desea actualizar.
+    Luego, consulta la base de datos para obtener la información actual del equipo.
+    Si el equipo existe, se muestra su información y se solicitan los nuevos datos.
+    Después de validar los nuevos datos, se actualiza la entrada correspondiente en la base de datos.
+
+    """
     print('== Actualizar Equipo ==')
     numero_activo = validar_entero('Número de activo del equipo a actualizar: ')
 
@@ -115,6 +161,14 @@ def actualizar_equipo():
         print('No se encontró ningún equipo con ese número de activo.')
 
 def buscar_equipo():
+    """
+    Busca un equipo en la base de datos utilizando su número de activo.
+
+    Esta función solicita al usuario el número de activo del equipo que desea buscar.
+    Luego, consulta la base de datos para obtener la información del equipo correspondiente.
+    Si se encuentra un equipo con el número de activo proporcionado, se muestra su información.
+
+    """
     print('== Buscar Equipo ==')
     numero_activo = validar_entero('Número de activo del equipo a buscar: ')
 
@@ -135,6 +189,13 @@ def buscar_equipo():
         print('No se encontró ningún equipo con ese número de activo.')
 
 def ver_equipos():
+    """
+    Muestra la información de todos los equipos registrados en la base de datos.
+
+    Esta función consulta la base de datos para obtener la información de todos los equipos registrados.
+    Luego, muestra la información de cada equipo en el siguiente formato: Serial, Número de activo, Nombre.
+
+    """
     print('== Equipos Registrados ==')
     # Consultar todos los equipos en la base de datos
     query = "SELECT * FROM equipos"
@@ -149,6 +210,15 @@ def ver_equipos():
         print('No hay equipos registrados.')
 
 def eliminar_equipo():
+    """
+    Elimina un equipo de la base de datos según su número de activo.
+
+    Esta función solicita al usuario el número de activo del equipo que desea eliminar.
+    Luego, consulta la base de datos para verificar si existe un equipo con ese número de activo.
+    Si se encuentra un equipo, se solicita una confirmación al usuario antes de proceder con la eliminación.
+    Si se confirma la eliminación, se elimina el equipo de la base de datos.
+
+    """
     print('== Eliminar Equipo ==')
     numero_activo = validar_entero('Número de activo del equipo a eliminar: ')
 
@@ -170,6 +240,13 @@ def eliminar_equipo():
 
 # Funciones para la gestión de responsables
 def ingresar_responsable():
+    """
+    Ingresa un responsable en la base de datos.
+
+    Esta función solicita al usuario los datos del responsable, como el código responsable, nombre, apellido,
+    número de documento de identidad y cargo. Luego, inserta los datos del responsable en la base de datos.
+
+    """
     print('== Ingresar Responsable ==')
     codigo_responsable = validar_entero('Código responsable: ')
     nombre = input('Nombre: ')
@@ -185,6 +262,14 @@ def ingresar_responsable():
     print('Responsable ingresado exitosamente.')
 
 def ver_responsables():
+    """
+    Muestra la lista de responsables registrados en la base de datos.
+
+    Esta función consulta todos los responsables almacenados en la base de datos y los muestra por pantalla.
+    Si hay responsables registrados, muestra información como el código responsable, nombre y apellido.
+    En caso contrario, muestra un mensaje indicando que no hay responsables registrados.
+
+    """
     print('== Responsables Registrados ==')
     # Consultar todos los responsables en la base de datos
     query = "SELECT * FROM responsables"
@@ -199,6 +284,16 @@ def ver_responsables():
         print('No hay responsables registrados.')
 
 def actualizar_responsable():
+    """
+    Permite actualizar la información de un responsable existente en la base de datos.
+
+    Esta función solicita al usuario el código responsable del responsable que se desea actualizar.
+    Luego, consulta la base de datos para obtener la información actual del responsable.
+    Si se encuentra un responsable con el código responsable especificado, se muestra su información
+    por pantalla y se solicitan los nuevos datos del responsable.
+    Después de recopilar los nuevos datos, actualiza la información del responsable en la base de datos.
+
+    """
     print('== Actualizar Responsable ==')
     codigo_responsable = validar_entero('Código responsable del responsable a actualizar: ')
 
@@ -232,6 +327,15 @@ def actualizar_responsable():
         print('No se encontró ningún responsable con ese código responsable.')
 
 def eliminar_responsable():
+    """
+    Permite eliminar un responsable de la base de datos.
+
+    Esta función solicita al usuario el código responsable del responsable que se desea eliminar.
+    Luego, consulta la base de datos para verificar la existencia del responsable.
+    Si se encuentra un responsable con el código responsable especificado, se solicita una confirmación
+    para proceder con la eliminación. Si la confirmación es positiva, se elimina el responsable de la base de datos.
+
+    """
     print('== Eliminar Responsable ==')
     codigo_responsable = validar_entero('Código responsable del responsable a eliminar: ')
 
@@ -251,20 +355,18 @@ def eliminar_responsable():
     else:
         print('No se encontró ningún responsable con ese código responsable.')
 
-
-# Funciones auxiliares
-def validar_entero(mensaje):
-    while True:
-        valor = input(mensaje)
-        try:
-            valor_entero = int(valor)
-            return valor_entero
-        except ValueError:
-            print('Error: Ingrese un valor entero válido.')
-
-
 # Menú principal
 def menu():
+    """
+    Muestra un menú de opciones para el sistema de gestión de equipos.
+
+    Esta función presenta al usuario un menú con diferentes opciones relacionadas con el sistema de gestión de equipos.
+    El usuario puede seleccionar una opción ingresando el número correspondiente.
+    Según la opción seleccionada, se llamará a la función correspondiente para llevar a cabo la operación deseada.
+    Las opciones disponibles incluyen: ingreso de equipo, búsqueda de equipo, visualización de equipos, eliminación de equipo,
+    ingreso de responsable, visualización de responsables, actualización de responsable y eliminación de responsable.
+
+    """
     while True:
         print('=== Sistema de Gestión de Equipos ===')
         print('1. Ingresar Equipo')

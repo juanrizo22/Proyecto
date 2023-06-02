@@ -17,12 +17,11 @@ sql="CREATE database informatica1"
 cursor.execute(sql)
 sql="""CREATE TABLE equipos(
      SERIAL VARCHAR(100),
-     NUMERO_ACTIVO INT VARCHAR(100),
+     NUMERO_ACTIVO VARCHAR(100),
      NOMBRE_EQUIPO VARCHAR(100),
      MARCA VARCHAR(100),
      CODIGO_UBICACION VARCHAR(100),
-     CODIGO_RESPONSABLE VARCHAR(100)
-    )"""
+     CODIGO_RESPONSABLE VARCHAR(100));"""
 cursor.execute(sql)
 
 # Funciones de validación

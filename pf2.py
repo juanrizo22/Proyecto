@@ -16,12 +16,12 @@ cursor = db.cursor()
 sql="CREATE database informatica1"
 cursor.execute(sql)
 sql="""CREATE TABLE equipos(
-     SERIAL,
-     NUMERO_ACTIVO INT,
-     NOMBRE_EQUIPO,
-     MARCA,
-     CODIGO_UBICACION,
-     CODIGO_RESPONSABLE
+     SERIAL(10),
+     NUMERO_ACTIVO INT(10),
+     NOMBRE_EQUIPO(10),
+     MARCA(10),
+     CODIGO_UBICACION(10),
+     CODIGO_RESPONSABLE(10)
     )"""
 cursor.execute(sql)
 

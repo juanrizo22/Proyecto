@@ -20,7 +20,7 @@ cursor.execute(sql)
 sql="""CREATE TABLE IF NOT EXISTS equipos(
      serial VARCHAR(100),
      numero_activo VARCHAR(100),
-     nombreVARCHAR(100),
+     nombre VARCHAR(100),
      marca VARCHAR(100),
      codigo_ubicacion VARCHAR(100),
      codigo_responsable VARCHAR(100));"""

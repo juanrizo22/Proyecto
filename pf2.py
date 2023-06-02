@@ -13,15 +13,15 @@ db_config = {
 # Conexión a la base de datos
 db = mysql.connector.connect(**db_config)
 cursor = db.cursor()
-#sql="CREATE database informatica1"
-#cursor.execute(sql)
+sql="CREATE database informatica1"
+cursor.execute(sql)
 sql="""CREATE TABLE equipos(
-     SERIAL VARCHAR(100),
-     NUMERO_ACTIVO VARCHAR(100),
-     NOMBRE_EQUIPO VARCHAR(100),
-     MARCA VARCHAR(100),
-     CODIGO_UBICACION VARCHAR(100),
-     CODIGO_RESPONSABLE VARCHAR(100));"""
+     serial VARCHAR(100),
+     numero_activo VARCHAR(100),
+     nombre VARCHAR(100),
+     marca VARCHAR(100),
+     codigo_ubicacion VARCHAR(100),
+     codigo_responsable VARCHAR(100));"""
 cursor.execute(sql)
 
 # Funciones de validación

@@ -17,7 +17,7 @@ sql="CREATE database informatica1"
 cursor.execute(sql)
 sql="""CREATE TABLE equipos(
      SERIAL(100),
-     NUMERO_ACTIVO INT(10),
+     NUMERO_ACTIVO INT(100),
      NOMBRE_EQUIPO(100),
      MARCA(100),
      CODIGO_UBICACION(100),

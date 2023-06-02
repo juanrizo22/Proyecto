@@ -13,6 +13,17 @@ db_config = {
 # Conexión a la base de datos
 db = mysql.connector.connect(**db_config)
 cursor = db.cursor()
+sql="CREATE database informatica1"
+cursor.execute(sql)
+sql="""CREATE TABLE equipos(
+     SERIAL,
+     NUMERO_ACTIVO INT,
+     NOMBRE_EQUIPO,
+     MARCA,
+     CODIGO_UBICACION,
+     CODIGO_RESPONSABLE
+    )"""
+cursor.execute(sql)
 
 # Funciones de validación
 def validar_entero(mensaje):

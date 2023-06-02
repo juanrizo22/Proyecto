@@ -15,15 +15,16 @@ db = mysql.connector.connect(**db_config)
 cursor = db.cursor()
 nombre='informatica'
 sql_nombre=f"CREATE DATABASE IF NOT EXISTS {nombre}"
-cursor.execute(sql_nombre)
-sql_nombre="""CREATE TABLE IF NOT EXISTS equipos(
+sql="CREATE database IF NOT EXISTS informatica1"
+cursor.execute(sql)
+sql="""CREATE TABLE IF NOT EXISTS equipos(
      serial VARCHAR(100),
      numero_activo VARCHAR(100),
      nombreVARCHAR(100),
      marca VARCHAR(100),
      codigo_ubicacion VARCHAR(100),
      codigo_responsable VARCHAR(100));"""
-cursor.execute(sql_nombre)
+cursor.execute(sql)
 
 # Funciones de validación
 def validar_entero(mensaje):

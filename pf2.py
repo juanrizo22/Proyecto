@@ -15,7 +15,7 @@ db = mysql.connector.connect(**db_config)
 cursor = db.cursor()
 sql="CREATE database informatica1"
 cursor.execute(sql)
-sql="""CREATE TABLE equipos(
+sql="""CREATE TABLE IF NOT EXISTS equipos(
      serial VARCHAR(100),
      numero_activo VARCHAR(100),
      nombre VARCHAR(100),

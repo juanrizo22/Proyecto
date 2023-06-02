@@ -13,7 +13,7 @@ db_config = {
 # Conexión a la base de datos
 db = mysql.connector.connect(**db_config)
 cursor = db.cursor()
-sql="CREATE database informatica1"
+sql="CREATE database IF NOT EXISTS informatica1"
 cursor.execute(sql)
 sql="""CREATE TABLE IF NOT EXISTS equipos(
      serial VARCHAR(100),
